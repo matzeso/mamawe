@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QR Code</title>
+    <meta charset="UTF-8">
+    <title>QR Code Styling</title>
+    <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
 </head>
 <body>
-  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
-  <div id="qrcode-container">
-    <img id="qrcode" alt="QR Code">
-  </div>
-  <script>
-    const qrCodeData = "https://www.shop-apotheke.com/arzneimittel/upmDRWPU9/leber-komplex-kapseln.htm"; //?position=1&query=mariendite&queryID=55b002ccace3ade6fe26eea9aa96dbb2&eventName=click+on+product+in+suggest&eventType=click&objectIDs=%5BupmDRWPU9%5D
-    const qrCodeImage = document.getElementById('qrcode');
+<div id="canvas"></div>
+<script type="text/javascript">
 
-    QRCode.toDataURL(qrCodeData)
-      .then(url => {
-        qrCodeImage.src = url;
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  </script>
+    const qrCode = new QRCodeStyling({
+        width: 500,
+        height: 500,
+        type: "svg",
+        data: "https://matzeso.github.io/lebertabletten",
+        image: "https://matzeso.github.io/mamawe/herz.svg",
+        dotsOptions: {
+            color: "#7D3692",
+            type: "rounded"
+        },
+        backgroundOptions: {
+            color: "#ffffff",
+        },
+        imageOptions: {
+            crossOrigin: "anonymous",
+            margin: 10
+        }
+    });
+
+    qrCode.append(document.getElementById("canvas"));
+    // qrCode.download({ name: "qr", extension: "svg" });
+</script>
 </body>
 </html>
